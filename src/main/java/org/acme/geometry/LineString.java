@@ -1,5 +1,6 @@
 package org.acme.geometry;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LineString implements Geometry {
@@ -7,13 +8,14 @@ public class LineString implements Geometry {
 	private List<Point> lPts;
 
 	public LineString() {
-		this.lPts = null;
+		this.lPts = new ArrayList<Point>();
 	}
 
 	public LineString(List<Point> l) {
-		this.lPts = l;
-		if (this.getNumPoints() == 1)
-			this.lPts = null;
+		if (l == null || l.size() == 1)
+			this.lPts = new ArrayList<Point>();
+		else
+			this.lPts = l;
 	}
 
 	@Override
@@ -23,7 +25,7 @@ public class LineString implements Geometry {
 
 	@Override
 	public boolean isEmpty() {
-		return this.lPts == null;
+		return this.lPts.isEmpty();
 	}
 
 	@Override
@@ -32,10 +34,7 @@ public class LineString implements Geometry {
 	}
 
 	public int getNumPoints() {
-		if (this.isEmpty())
-			return 0;
-		else
-			return this.lPts.size();
+		return this.lPts.size();
 	}
 
 	public Point getPointN(int n) {

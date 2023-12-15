@@ -5,11 +5,14 @@ public class Point implements Geometry {
 	private Coordinate c;
 
 	public Point() {
-		this.c = null;
+		this.c = new Coordinate();
 	}
 
 	public Point(Coordinate c) {
-		this.c = c;
+		if (c == null)
+			this.c = new Coordinate();
+		else
+			this.c = c;
 	}
 
 	@Override
@@ -19,7 +22,7 @@ public class Point implements Geometry {
 
 	@Override
 	public boolean isEmpty() {
-		return this.c == null;
+		return this.c.isEmpty();
 	}
 
 	@Override
