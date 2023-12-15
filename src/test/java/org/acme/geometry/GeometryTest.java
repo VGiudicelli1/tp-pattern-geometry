@@ -18,11 +18,17 @@ public class GeometryTest {
 		
 		List<Point> lPts = new ArrayList<Point>();
 		lPts.add(new Point(new Coordinate(1.4, 5.7)));
-		lPts.add(new Point(new Coordinate(7.2, 4.8)));
 		LineString l2 = new LineString(lPts);
+		Assert.assertEquals(l2.getNumPoints(), 0);
 		
-		Assert.assertEquals(l2.getNumPoints(), 2);
-		Assert.assertEquals(l2.getPointN(1).getCoordinate().getX(), 7.2, EPSILON);
+
+		lPts.add(new Point(new Coordinate(7.2, 4.8)));
+		LineString l3 = new LineString(lPts);
+		
+		Assert.assertEquals(l3.getNumPoints(), 2);
+		Assert.assertEquals(l3.getPointN(1).getCoordinate().getX(), 7.2, EPSILON);
+		
+		
 	}
 
 	@Test

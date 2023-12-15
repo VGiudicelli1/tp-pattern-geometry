@@ -1,30 +1,34 @@
 package org.acme.geometry;
 
 import java.util.List;
+import java.util.ArrayList;
 
 public class LineString implements Geometry {
+	
+	private List<Point> lPts;
 
 	@Override
 	public String getType() {
-		// TODO Auto-generated method stub
-		return null;
+		return "LineString";
 	}
 
 	public LineString() {
-		// TODO
+		this.lPts = new ArrayList<Point>();
 	}
 	
 	public LineString(List<Point> l) {
-		// TODO
+		if (l.size() == 1) {
+			this.lPts = new ArrayList<Point>();
+		} else {
+			this.lPts = l;
+		}
 	}
 	
 	public int getNumPoints() {
-		// TODO
-		return 0;
+		return this.lPts.size();
 	}
 	
 	public Point getPointN(int n) {
-		// TODO
-		return null;
+		return this.lPts.get(n);
 	}
 }

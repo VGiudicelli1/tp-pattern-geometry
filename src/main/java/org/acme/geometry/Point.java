@@ -5,17 +5,16 @@ public class Point implements Geometry {
 	private Coordinate c;
 	
 	public Point() {
-		// TODO
+		this.c = new Coordinate();
 	}
 	
 	public Point(Coordinate c) {
-		// TODO
+		this.c = c;
 	}
 
 	@Override
 	public String getType() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Point";
 	}
 
 	public Coordinate getCoordinate() {
