@@ -37,6 +37,11 @@ public class Point implements Geometry {
 		return new EnvelopeBuilder().insert(c).build();
 	}
 
+	@Override
+	public void accept(GeometryVisitor visitor) {
+		visitor.visit(this);
+	}
+
 	public Coordinate getCoordinate() {
 		return this.c;
 	}

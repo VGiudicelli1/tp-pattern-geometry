@@ -53,6 +53,11 @@ public class LineString implements Geometry {
 		return builder.build();
 	}
 
+	@Override
+	public void accept(GeometryVisitor visitor) {
+		visitor.visit(this);
+	}
+
 	public int getNumPoints() {
 		return this.lPts.size();
 	}
@@ -60,4 +65,5 @@ public class LineString implements Geometry {
 	public Point getPointN(int n) {
 		return this.lPts.get(n);
 	}
+
 }
