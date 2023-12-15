@@ -5,7 +5,7 @@ public class Point implements Geometry {
 	private Coordinate c;
 	
 	public Point() {
-		this.c = new Coordinate();
+		this.c = null;
 	}
 	
 	public Point(Coordinate c) {
@@ -21,4 +21,8 @@ public class Point implements Geometry {
 		return this.c;
 	}
 
+	@Override
+	public boolean isEmpty() {
+		return this.c == null;
+	}
 }
