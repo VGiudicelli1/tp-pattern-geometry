@@ -46,4 +46,28 @@ public class GeometryTest {
 
 		Assert.assertTrue(new Point(null).isEmpty());
 	}
+	
+	@Test
+	public void testTranslate() {
+		// init
+		Point p = new Point(new Coordinate(5.3, 9.1));
+		List<Point> lPts = new ArrayList<Point>();
+		lPts.add(new Point(new Coordinate(1.6, 8.2)));
+		lPts.add(new Point(new Coordinate(7.2, 3.5)));
+		LineString l = new LineString(lPts);
+		double dx = 1.3, dy = 5.2;
+		
+		// compute
+		p.translate(dx,  dy);
+		l.translate(dx, dy);
+		
+		// test
+		Assert.assertEquals(p.getCoordinate().getX(), 5.3+dx, EPSILON);
+		Assert.assertEquals(p.getCoordinate().getY(), 9.1+dy, EPSILON);
+
+		Assert.assertEquals(l.getPointN(0).getCoordinate().getX(), 1.6+dx, EPSILON);
+		Assert.assertEquals(l.getPointN(0).getCoordinate().getY(), 8.2+dy, EPSILON);
+		Assert.assertEquals(l.getPointN(1).getCoordinate().getX(), 7.2+dx, EPSILON);
+		Assert.assertEquals(l.getPointN(1).getCoordinate().getY(), 3.5+dy, EPSILON);
+	}
 }

@@ -22,6 +22,11 @@ public class Point implements Geometry {
 		return this.c == null;
 	}
 
+	@Override
+	public void translate(double dx, double dy) {
+		// TODO
+	}
+
 	public Coordinate getCoordinate() {
 		return this.c;
 	}

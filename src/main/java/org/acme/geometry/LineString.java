@@ -26,6 +26,11 @@ public class LineString implements Geometry {
 		return this.lPts == null;
 	}
 
+	@Override
+	public void translate(double dx, double dy) {
+		// TODO
+	}
+
 	public int getNumPoints() {
 		if (this.isEmpty())
 			return 0;
