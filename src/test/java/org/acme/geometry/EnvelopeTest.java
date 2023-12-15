@@ -10,13 +10,15 @@ public class EnvelopeTest {
 	public void testEnvelopeBuilder() {
 		// init & compute
 		EnvelopeBuilder builder = new EnvelopeBuilder();
+		Envelope resultEmpty = builder.build();
 		builder.insert(new Coordinate(0.0, 1.0));
 		builder.insert(new Coordinate(2.0, 0.0));
 		builder.insert(new Coordinate(1.0, 3.0));
 		Envelope result = builder.build();
 
 		// test
-		Assert.assertEquals(result.toString(), "0.0,2.0,0.0,3.0");
+		Assert.assertTrue(resultEmpty.isEmpty());
+		Assert.assertEquals(result.toString(), "0.0,0.0,2.0,3.0");
 	}
 
 	@Test
@@ -35,6 +37,12 @@ public class EnvelopeTest {
 		Assert.assertEquals(e2.getYmin(), 3.4, EPSILON);
 		Assert.assertEquals(e2.getXmax(), 5.6, EPSILON);
 		Assert.assertEquals(e2.getYmax(), 7.8, EPSILON);
+
+		Assert.assertFalse(new Envelope(new Coordinate(1.2, 3.4), new Coordinate(5.6, 7.8)).isEmpty());
+		Assert.assertTrue(new Envelope(null, new Coordinate(5.6, 7.8)).isEmpty());
+		Assert.assertTrue(new Envelope(new Coordinate(1.2, 3.4), null).isEmpty());
+		Assert.assertTrue(new Envelope(new Coordinate(), new Coordinate(5.6, 7.8)).isEmpty());
+		Assert.assertTrue(new Envelope(new Coordinate(1.2, 3.4), new Coordinate()).isEmpty());
 	}
 
 }

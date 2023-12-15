@@ -4,34 +4,40 @@ public class Envelope {
 	private Coordinate bottomLeft, topRight;
 
 	public Envelope() {
-
+		this(null, null);
 	}
 
-	public Envelope(Coordinate botomLeft, Coordinate topRight) {
-
+	public Envelope(Coordinate bottomLeft, Coordinate topRight) {
+		if (bottomLeft == null || topRight == null || bottomLeft.isEmpty() || topRight.isEmpty()) {
+			this.bottomLeft = Coordinate.EMPTY;
+			this.topRight = Coordinate.EMPTY;
+		} else {
+			this.bottomLeft = bottomLeft;
+			this.topRight = topRight;
+		}
 	}
 
 	public boolean isEmpty() {
-		return true;
+		return this.bottomLeft.isEmpty();
 	}
 
 	public double getXmin() {
-		return 0;
+		return this.bottomLeft.getX();
 	}
 
 	public double getXmax() {
-		return 0;
+		return this.topRight.getX();
 	}
 
 	public double getYmin() {
-		return 0;
+		return this.bottomLeft.getY();
 	}
 
 	public double getYmax() {
-		return 0;
+		return this.topRight.getY();
 	}
 
 	public String toString() {
-		return "";
+		return this.getXmin() + "," + this.getYmin() + "," + this.getXmax() + "," + this.getYmax();
 	}
 }
