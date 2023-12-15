@@ -29,8 +29,7 @@ public class Point implements Geometry {
 
 	@Override
 	public Point clone() {
-		// TODO
-		return this;
+		return new Point(this.c);
 	}
 
 	public Coordinate getCoordinate() {
