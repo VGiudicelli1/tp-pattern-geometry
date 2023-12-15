@@ -12,10 +12,11 @@ public class LineString implements Geometry {
 	}
 
 	public LineString(List<Point> l) {
-		if (l == null || l.size() == 1)
+		if (l == null || l.size() == 1) {
 			this.lPts = new ArrayList<Point>();
-		else
+		} else {
 			this.lPts = l;
+		}
 	}
 
 	@Override
@@ -65,5 +66,4 @@ public class LineString implements Geometry {
 	public Point getPointN(int n) {
 		return this.lPts.get(n);
 	}
-
 }

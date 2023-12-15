@@ -2,7 +2,8 @@ package org.acme.geometry;
 
 public class Coordinate {
 
-	private double x, y;
+	private double x;
+	private double y;
 
 	public Coordinate() {
 		this.x = Double.NaN;
@@ -26,6 +27,7 @@ public class Coordinate {
 		return Double.isNaN(this.x) || Double.isNaN(this.y);
 	}
 
+	@Override
 	public String toString() {
 		return "[" + this.x + "," + this.y + "]";
 	}

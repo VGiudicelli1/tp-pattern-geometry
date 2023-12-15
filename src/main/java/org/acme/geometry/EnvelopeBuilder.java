@@ -1,7 +1,10 @@
 package org.acme.geometry;
 
 public class EnvelopeBuilder {
-	double xMin, xMax, yMin, yMax;
+	double xMin;
+	double xMax;
+	double yMin;
+	double yMax;
 
 	public EnvelopeBuilder() {
 		this.xMin = Double.MAX_VALUE;
@@ -19,8 +22,9 @@ public class EnvelopeBuilder {
 	}
 
 	public Envelope build() {
-		if (this.xMax < this.xMin) // case any points
+		if (this.xMax < this.xMin) { // case any points
 			return new Envelope();
+		}
 		return new Envelope(new Coordinate(this.xMin, this.yMin), new Coordinate(this.xMax, this.yMax));
 	}
 }

@@ -1,7 +1,8 @@
 package org.acme.geometry;
 
 public class Envelope {
-	private Coordinate bottomLeft, topRight;
+	private Coordinate bottomLeft;
+	private Coordinate topRight;
 
 	public Envelope() {
 		this(null, null);
@@ -37,6 +38,7 @@ public class Envelope {
 		return this.topRight.getY();
 	}
 
+	@Override
 	public String toString() {
 		return this.getXmin() + "," + this.getYmin() + "," + this.getXmax() + "," + this.getYmax();
 	}
