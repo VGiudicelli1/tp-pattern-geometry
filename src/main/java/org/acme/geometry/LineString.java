@@ -30,7 +30,9 @@ public class LineString implements Geometry {
 
 	@Override
 	public void translate(double dx, double dy) {
-		// TODO
+		for (Point p : this.lPts) {
+			p.translate(dx, dy);
+		}
 	}
 
 	public int getNumPoints() {
