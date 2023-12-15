@@ -27,4 +27,11 @@ public class WktVisitorTest {
 		Assert.assertEquals(writer.getResult(), "LINESTRING(1.2 3.4,5.6 7.8)");
 
 	}
+
+	@Test
+	public void test() {
+		Geometry p = GeometryTestFactory.ptB();
+
+		Assert.assertEquals(p.asText(), "POINT(5.6 7.8)");
+	}
 }
