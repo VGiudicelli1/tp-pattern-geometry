@@ -77,4 +77,43 @@ public class GeometryTest {
 		Assert.assertEquals(l.getPointN(1).getCoordinate().getY(), 3.5+dy, EPSILON);
 		Assert.assertEquals(lNull.getNumPoints(), 0);
 	}
+	
+	@Test
+	public void testClonePoint() {
+		// clone
+		Point p1 = new Point(new Coordinate(5.4, 3.9));
+		Point p2 = p1.clone();
+		
+		// test if equals
+		Assert.assertEquals(p1.getCoordinate().getX(), p2.getCoordinate().getX(), EPSILON);
+		Assert.assertEquals(p1.getCoordinate().getY(), p2.getCoordinate().getY(), EPSILON);
+		
+		// test if distinct
+		p2.translate(1.0, 1.0);
+		Assert.assertEquals(p2.getCoordinate().getX(), 6.4, EPSILON);
+		Assert.assertEquals(p2.getCoordinate().getY(), 4.9, EPSILON);
+		Assert.assertEquals(p1.getCoordinate().getX(), 5.4, EPSILON);
+		Assert.assertEquals(p1.getCoordinate().getY(), 3.9, EPSILON);
+	}
+
+	@Test
+	public void testCloneLineString() {
+		// clone
+		List<Point> lPts = new ArrayList<Point>();
+		lPts.add(new Point(new Coordinate(5.4, 3.9)));
+		lPts.add(new Point(new Coordinate(7.2, 3.5)));
+		LineString l1 = new LineString(lPts);
+		LineString l2 = l1.clone();
+		
+		// test if equals
+		Assert.assertEquals(l1.getPointN(0).getCoordinate().getX(), l2.getPointN(0).getCoordinate().getX(), EPSILON);
+		Assert.assertEquals(l1.getPointN(0).getCoordinate().getY(), l2.getPointN(0).getCoordinate().getY(), EPSILON);
+		
+		// test if distinct
+		l2.translate(1.0, 1.0);
+		Assert.assertEquals(l2.getPointN(0).getCoordinate().getX(), 6.4, EPSILON);
+		Assert.assertEquals(l2.getPointN(0).getCoordinate().getY(), 4.9, EPSILON);
+		Assert.assertEquals(l1.getPointN(0).getCoordinate().getX(), 5.4, EPSILON);
+		Assert.assertEquals(l1.getPointN(0).getCoordinate().getY(), 3.9, EPSILON);
+	}
 }
