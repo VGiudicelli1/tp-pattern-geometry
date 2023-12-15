@@ -43,6 +43,15 @@ public class LineString implements Geometry {
 		}
 		return new LineString(lNewPts);
 	}
+	
+	@Override
+	public Envelope getEnvelope() {
+		EnvelopeBuilder builder = new EnvelopeBuilder();
+		for (Point p: this.lPts) {
+			builder.insert(p.getCoordinate());
+		}
+		return builder.build();
+	}
 
 	public int getNumPoints() {
 		return this.lPts.size();

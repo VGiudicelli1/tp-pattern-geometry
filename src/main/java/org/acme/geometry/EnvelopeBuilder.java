@@ -10,11 +10,12 @@ public class EnvelopeBuilder {
 		this.yMax = Double.MIN_VALUE;
 	}
 
-	public void insert(Coordinate c) {
+	public EnvelopeBuilder insert(Coordinate c) {
 		this.xMin = Math.min(this.xMin, c.getX());
 		this.xMax = Math.max(this.xMax, c.getX());
 		this.yMin = Math.min(this.yMin, c.getY());
 		this.yMax = Math.max(this.yMax, c.getY());
+		return this;
 	}
 
 	public Envelope build() {

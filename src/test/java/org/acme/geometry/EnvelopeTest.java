@@ -1,5 +1,8 @@
 package org.acme.geometry;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -43,6 +46,19 @@ public class EnvelopeTest {
 		Assert.assertTrue(new Envelope(new Coordinate(1.2, 3.4), null).isEmpty());
 		Assert.assertTrue(new Envelope(new Coordinate(), new Coordinate(5.6, 7.8)).isEmpty());
 		Assert.assertTrue(new Envelope(new Coordinate(1.2, 3.4), new Coordinate()).isEmpty());
+	}
+	
+	@Test
+	public void testEnvelopePoint() {
+		Point p = new Point(new Coordinate(1.2, 3.4));
+		Assert.assertEquals(p.getEnvelope().toString(), "1.2,3.4,1.2,3.4");
+		
+		List<Point> lPts = new ArrayList<Point>();
+		lPts.add(p);
+		lPts.add(new Point(new Coordinate(5.6,7.8)));
+		LineString l = new LineString(lPts);
+		
+		Assert.assertEquals(l.getEnvelope().toString(), "1.2,3.4,5.6,7.8");
 	}
 
 }
