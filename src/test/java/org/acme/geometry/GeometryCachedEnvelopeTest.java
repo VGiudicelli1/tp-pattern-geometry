@@ -42,4 +42,14 @@ public class GeometryCachedEnvelopeTest {
 		gO.translate(5.0, 2.0);
 		Assert.assertEquals(gD.asText(), gDclone.asText());
 	}
+
+	@Test
+	public void testUpdateEmpriseOnTranslate() {
+		Geometry g = new GeometryWithCachedEnvelope(GeometryTestFactory.ptA());
+
+		Assert.assertEquals(g.getEnvelope().toString(), "1.2,3.4,1.2,3.4");
+
+		g.translate(1.1, -1.1);
+		Assert.assertEquals(g.getEnvelope().toString(), "2.3,2.3,2.3,2.3");
+	}
 }

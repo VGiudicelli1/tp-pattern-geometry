@@ -15,4 +15,6 @@ public interface Geometry {
 	public void accept(GeometryVisitor visitor);
 
 	public String asText();
+
+	public void addListener(GeometryListener listener);
 }
