@@ -5,14 +5,11 @@ public class Point implements Geometry {
 	private Coordinate c;
 
 	public Point() {
-		this.c = new Coordinate();
+		this.c = Coordinate.EMPTY;
 	}
 
 	public Point(Coordinate c) {
-		if (c == null)
-			this.c = new Coordinate();
-		else
-			this.c = c;
+		this.c = c != null ? c : Coordinate.EMPTY;
 	}
 
 	@Override
@@ -28,6 +25,12 @@ public class Point implements Geometry {
 	@Override
 	public void translate(double dx, double dy) {
 		this.c = new Coordinate(this.c.getX() + dx, this.c.getY() + dy);
+	}
+
+	@Override
+	public Point clone() {
+		// TODO
+		return this;
 	}
 
 	public Coordinate getCoordinate() {

@@ -35,6 +35,12 @@ public class LineString implements Geometry {
 		}
 	}
 
+	@Override
+	public LineString clone() {
+		// TODO
+		return this;
+	}
+
 	public int getNumPoints() {
 		return this.lPts.size();
 	}
