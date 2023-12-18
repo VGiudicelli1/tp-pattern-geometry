@@ -1,20 +1,21 @@
 package org.acme.geometry;
 
-public class WktVisitor implements GeometryVisitor {
+public class WktVisitor implements GeometryVisitor<Void> {
 	private StringBuilder buffer;
 
 	@Override
-	public void visit(Point p) {
+	public Void visit(Point p) {
 		this.buffer = new StringBuilder();
 		if (p.isEmpty()) {
 			this.buffer.append("POINT EMPTY");
 		} else {
 			this.buffer.append("POINT(" + p.getCoordinate().getX() + " " + p.getCoordinate().getY() + ")");
 		}
+		return null;
 	}
 
 	@Override
-	public void visit(LineString l) {
+	public Void visit(LineString l) {
 		this.buffer = new StringBuilder();
 		if (l.isEmpty()) {
 			this.buffer.append("LINESTRING EMPTY");
@@ -29,6 +30,7 @@ public class WktVisitor implements GeometryVisitor {
 			}
 			this.buffer.append(")");
 		}
+		return null;
 	}
 
 	public String getResult() {
@@ -36,7 +38,7 @@ public class WktVisitor implements GeometryVisitor {
 	}
 
 	@Override
-	public void visit(GeometryCollection c) {
+	public Void visit(GeometryCollection c) {
 		this.buffer = new StringBuilder();
 		if (c.isEmpty()) {
 			this.buffer.append("GEOMETRYCOLLECTION EMPTY");
@@ -52,6 +54,7 @@ public class WktVisitor implements GeometryVisitor {
 			}
 			this.buffer.append(")");
 		}
+		return null;
 	}
 
 }
