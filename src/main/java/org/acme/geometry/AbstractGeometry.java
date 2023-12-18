@@ -1,10 +1,11 @@
 package org.acme.geometry;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class AbstractGeometry implements Geometry {
 
-	private ArrayList<GeometryListener> listeners;
+	private List<GeometryListener> listeners;
 
 	public AbstractGeometry() {
 		this.listeners = new ArrayList<GeometryListener>();
