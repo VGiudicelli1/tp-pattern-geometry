@@ -46,10 +46,10 @@ public class LineString extends AbstractGeometry {
 	}
 
 	@Override
-	public void accept(GeometryVisitor visitor) {
-		visitor.visit(this);
+	public <T> T accept(GeometryVisitor<T> visitor) {
+		return visitor.visit(this);
 	}
-
+	
 	public int getNumPoints() {
 		return this.lPts.size();
 	}

@@ -12,7 +12,7 @@ public interface Geometry {
 
 	public Envelope getEnvelope();
 
-	public void accept(GeometryVisitor visitor);
+	public <T> T accept(GeometryVisitor<T> visitor);
 
 	public String asText();
 
