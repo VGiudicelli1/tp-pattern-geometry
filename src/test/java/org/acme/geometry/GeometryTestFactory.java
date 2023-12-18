@@ -18,4 +18,11 @@ public class GeometryTestFactory {
 	public final static Point ptB() {
 		return new Point(new Coordinate(5.6, 7.8));
 	}
+
+	public final static GeometryCollection collection1() {
+		List<Geometry> lGeom = new ArrayList<Geometry>();
+		lGeom.add(ptA());
+		lGeom.add(lineAB());
+		return new GeometryCollection(lGeom);
+	}
 }

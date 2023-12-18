@@ -10,6 +10,12 @@ public class LogGeometryVisitorTest {
 	public static final double EPSILON = 1.0e-15;
 
 	@Test
+	public void testLogEmpty() {
+		LogGeometryVisitor visitor = new LogGeometryVisitor();
+		Assert.assertNotNull(visitor);
+	}
+
+	@Test
 	public void testLogPointEmpty() {
 		ByteArrayOutputStream os = new ByteArrayOutputStream();
 		PrintStream out = new PrintStream(os);
@@ -51,5 +57,27 @@ public class LogGeometryVisitorTest {
 		Geometry l = GeometryTestFactory.lineAB();
 		l.accept(visitor);
 		Assert.assertEquals(os.toString(), "Je suis une polyligne définie par 2 points.\n");
+	}
+
+	@Test
+	public void testLogCollectionEmpty() {
+		ByteArrayOutputStream os = new ByteArrayOutputStream();
+		PrintStream out = new PrintStream(os);
+		LogGeometryVisitor visitor = new LogGeometryVisitor(out);
+
+		Geometry c = new GeometryCollection();
+		c.accept(visitor);
+		Assert.assertEquals(os.toString(), "Je suis une collection vide.\n");
+	}
+
+	@Test
+	public void testLogCollectionNonEmpty() {
+		ByteArrayOutputStream os = new ByteArrayOutputStream();
+		PrintStream out = new PrintStream(os);
+		LogGeometryVisitor visitor = new LogGeometryVisitor(out);
+
+		Geometry c = GeometryTestFactory.collection1();
+		c.accept(visitor);
+		Assert.assertEquals(os.toString(), "Je suis une collection définie par 2 géométries.\n");
 	}
 }

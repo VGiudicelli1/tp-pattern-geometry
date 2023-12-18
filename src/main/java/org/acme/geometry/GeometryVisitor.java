@@ -5,4 +5,6 @@ public interface GeometryVisitor {
 	public void visit(Point p);
 
 	public void visit(LineString l);
+
+	public void visit(GeometryCollection c);
 }

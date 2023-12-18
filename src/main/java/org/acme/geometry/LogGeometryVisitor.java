@@ -32,4 +32,13 @@ public class LogGeometryVisitor implements GeometryVisitor {
 		}
 	}
 
+	@Override
+	public void visit(GeometryCollection c) {
+		if (c.isEmpty()) {
+			this.out.println("Je suis une collection vide.");
+		} else {
+			this.out.println("Je suis une collection définie par " + c.getNumGeometries() + " géométries.");
+		}
+	}
+
 }
